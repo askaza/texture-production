@@ -20,6 +20,31 @@ $(document).ready(function(){
         }
     });
 
+    $(document).click(function (e) {
+        var container = $(".b-popover-wrapper");
+        if (!container.is(e.target) // if the target of the click isn't the container...
+                && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            $('.b-popover').hide();
+        }
+    });
+
+
+    // show popover
+    $('.js-show-popover').click(function (e) {
+        e.preventDefault();
+        var $target = $($(this).attr('href'));
+        if ($target.size()) {
+            if ($target.is(':visible')) {
+                $target.fadeOut();
+            } else {
+                $target.fadeIn();
+            }
+        }
+    });
+
+
+
 
 });
 function stickyHeader() {
